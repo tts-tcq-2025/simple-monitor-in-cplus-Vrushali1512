@@ -2,23 +2,11 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-
-bool batteryIsOk(bool a,bool b, bool c)
-{
-    if(a&&b&&c == 1)
-    {
-        printf("Battery condition ok");
-        return 1;
-    }
-    else
-    return 0;
-}
-
 bool temperature(int x)
 {
     if(x < 0 || x > 45)
     {
-        printf("Temperature out of range");
+        printf("Temperature out of range\n");
         return 0;
     }
     else
@@ -29,7 +17,7 @@ bool StateOfCharge(int x)
 {
     if(x < 20 || x > 80)
     {
-        printf("State of charge out of range");
+        printf("State of charge out of range\n");
         return 0;
     }
     else
@@ -40,20 +28,29 @@ bool chargeRate(float x)
 {
     if(x > 0.8)
     {
-        printf("Charge Rate out of range!");
+        printf("Charge Rate out of range!\n");
         return 0;
     }
     else
     return 1;
 }
+bool batteryIsOk(int x, int y, float z)
+{
+    bool a, b, c;
+    a = temperature(x);
+    b = StateOfCharge(y);
+    c = chargeRate(z);
+    if(a && b && c == 1)
+    {
+        printf("Battery condition ok\n");
+        return 1;
+    }
+    else
+    return 0;
+}
 
 int main() {
-    int a,b,c;
-    bool temp,soc,charge;
-    temp = temperature(40);
-    soc = StateOfCharge(85);
-    charge = chargeRate(0);
-    batteryIsOk(temp,soc,charge);
-
+    batteryIsOk(25, 70, 0.7);
+    batteryIsOk(40, 85, 0);
     return 0;
 }
