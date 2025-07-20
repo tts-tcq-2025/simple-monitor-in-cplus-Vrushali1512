@@ -1,24 +1,59 @@
-#include <assert.h>
-#include <iostream>
-using namespace std;
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdbool.h>
 
-bool batteryIsOk(float temperature, float soc, float chargeRate) {
-  if(temperature < 0 || temperature > 45) {
-    cout << "Temperature out of range!\n";
-    return false;
-  } 
-  if(soc < 20 || soc > 80) {
-    cout << "State of Charge out of range!\n";
-    return false;
-  } 
-  if(chargeRate > 0.8) {
-    cout << "Charge Rate out of range!\n";
-    return false;
-  }
-  return true;
+
+bool batteryIsOk(bool a,bool b, bool c)
+{
+    if(a&&b&&c == 1)
+    {
+        printf("Battery condition ok");
+        return 1;
+    }
+    else
+    return 0;
+}
+
+bool temperature(int x)
+{
+    if(x < 0 || x > 45)
+    {
+        printf("Temperature out of range");
+        return 0;
+    }
+    else
+    return 1;
+}
+
+bool StateOfCharge(int x)
+{
+    if(x < 20 || x > 80)
+    {
+        printf("State of charge out of range");
+        return 0;
+    }
+    else
+    return 1;
+}
+
+bool chargeRate(float x)
+{
+    if(x > 0.8)
+    {
+        printf("Charge Rate out of range!");
+        return 0;
+    }
+    else
+    return 1;
 }
 
 int main() {
-  assert(batteryIsOk(25, 70, 0.7) == true);
-  assert(batteryIsOk(50, 85, 0) == false);
+    int a,b,c;
+    bool temp,soc,charge;
+    temp = temperature(40);
+    soc = StateOfCharge(85);
+    charge = chargeRate(0);
+    batteryIsOk(temp,soc,charge);
+
+    return 0;
 }
