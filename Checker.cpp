@@ -35,11 +35,11 @@ bool chargeRate(float x)
 }
 bool batteryIsOk(int x, int y, float z)
 {
-    bool a, b, c;
-    a = temperature(x);
-    b = StateOfCharge(y);
-    c = chargeRate(z);
-    if(a && b && c)
+//    bool a, b, c;
+//    a = temperature(x);
+//    b = StateOfCharge(y);
+//    c = chargeRate(z);
+    if(temperature(x) && StateOfCharge(y) && chargeRate(z))
     {
         printf("Battery condition ok\n");
         return 1;
