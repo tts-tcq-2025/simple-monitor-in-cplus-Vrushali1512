@@ -1,42 +1,56 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-bool Min_Max(int x,int min,int max)
+bool batteryIsOk(bool a,bool b, bool c)
 {
-    if (x>min && x<max)
-    return 1;
+    if(a && b && c)
+    {
+        printf("Battery condition ok");
+        return 1;
+    }
     else
     return 0;
 }
 
-bool battery_Check(bool x, bool y, bool z)
+bool temperature(int x)
 {
-    if(x && y && z)
+    if(x < 0 || x > 45)
     {
-        printf("Battery is Ok\n");
-        return 1;
-    }
-    else
-    {
-        printf("Battery is not ok\n");
+        printf("Temperature out of range");
         return 0;
     }
+    else
+    return 1;
 }
 
-bool batteryIsOk(int temp,int soc,int chargeRate)
+bool StateOfCharge(int x)
 {
-    bool x,y,z;
-    x = Min_Max(temp,0,45);
-    y = Min_Max(soc,20,80);
-    if(chargeRate<0.8)
-    z = 1;
+    if(x < 20 || x > 80)
+    {
+        printf("State of charge out of range");
+        return 0;
+    }
     else
-    z =0;
-    battery_Check(x,y,z);
+    return 1;
+}
+
+bool chargeRate(float x)
+{
+    if(x > 0.8)
+    {
+        printf("Charge Rate out of range!");
+        return 0;
+    }
+    else
+    return 1;
 }
 
 int main() {
-    batteryIsOk(25, 70, 0.7);
-    batteryIsOk(40, 85, 0);
+    int a,b,c;
+    bool temp,soc,charge;
+    temp = temperature(40);
+    soc = StateOfCharge(85);
+    charge = chargeRate(0);
+    batteryIsOk(temp,soc,charge);
     return 0;
 }
