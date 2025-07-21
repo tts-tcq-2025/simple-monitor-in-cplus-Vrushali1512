@@ -41,11 +41,11 @@ bool batteryIsOk(int x, int y, float z)
     a = temperature(x);
     b = StateOfCharge(y);
     c = chargeRate(z);
-    return (a && c && b);
+    return (a && b && c);
 }
 
 int main() {
     assert(batteryIsOk(25, 70, 0.7) == true);
-    assert(batteryIsOk(50, 85, 0) == false);
+    assert(batteryIsOk(50, 85, 0.9) == false);
     return 0;
 }
