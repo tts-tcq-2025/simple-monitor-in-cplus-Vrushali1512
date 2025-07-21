@@ -6,7 +6,7 @@ bool temperature(int x)
 {
     if(x < 0 || x > 45)
     {
-        printf("Temperature out of range\n");
+        printf("Temperature out of range!\n");
         return 0;
     }
     else
@@ -17,7 +17,7 @@ bool StateOfCharge(int x)
 {
     if(x < 20 || x > 80)
     {
-        printf("State of charge out of range\n");
+        printf("State of charge out of range!\n");
         return 0;
     }
     else
@@ -46,6 +46,6 @@ bool batteryIsOk(int x, int y, float z)
 
 int main() {
     assert(batteryIsOk(25, 70, 0.7) == true);
-    assert(batteryIsOk(50, 85, 0.9) == false);
+    assert(batteryIsOk(50, 85, 0) == false);
     return 0;
 }
