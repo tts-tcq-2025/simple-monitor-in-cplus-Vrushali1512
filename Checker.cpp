@@ -33,28 +33,18 @@ bool chargeRate(float x)
     else
     return 1;
 }
-bool battery_Check(bool a,bool b, bool c)
-{
-    if(a && b && c)
-    {
-//        printf("Battery condition ok\n");
-        return 1;
-    }
-    else
-    return 0;
-}
+
 bool batteryIsOk(int x, int y, float z)
 {
-    bool a, b, c, d;
+    bool a, b, c;
     a = temperature(x);
     b = StateOfCharge(y);
     c = chargeRate(z);
-    d = battery_Check(a,b,c);
-    return d;
+    return (a && b && c);
 }
 
 int main() {
-    batteryIsOk(25, 70, 0.7);
-    batteryIsOk(40, 85, 0);
+    assert(batteryIsOk(25, 70, 0.7) == true);
+    assert(batteryIsOk(50, 85, 0) == false);
     return 0;
 }
