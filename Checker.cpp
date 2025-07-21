@@ -41,7 +41,7 @@ bool batteryIsOk(int x, int y, float z)
     a = temperature(x);
     b = StateOfCharge(y);
     c = chargeRate(z);
-    return (a && b && c);
+    return (a && c && b);
 }
 
 int main() {
