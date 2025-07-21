@@ -37,7 +37,7 @@ bool battery_Check(bool a,bool b, bool c)
 {
     if(a && b && c)
     {
-        printf("Battery condition ok\n");
+//        printf("Battery condition ok\n");
         return 1;
     }
     else
