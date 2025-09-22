@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-bool temperature(int x)
+bool temperature(int temp)
 {
-    if(x < 0 || x > 45)
+    if(temp < 0 || temp > 45)
     {
         printf("Temperature out of range!\n");
         return 0;
@@ -13,9 +13,9 @@ bool temperature(int x)
     return 1;
 }
 
-bool StateOfCharge(int x)
+bool StateOfCharge(int soc)
 {
-    if(x < 20 || x > 80)
+    if(soc < 20 || soc > 80)
     {
         printf("State of charge out of range!\n");
         return 0;
@@ -24,9 +24,9 @@ bool StateOfCharge(int x)
     return 1;
 }
 
-bool chargeRate(float x)
+bool chargeRate(float cRate)
 {
-    if(x > 0.8)
+    if(cRate > 0.8)
     {
         printf("Charge Rate out of range!\n");
         return 0;
@@ -35,13 +35,13 @@ bool chargeRate(float x)
     return 1;
 }
 
-bool batteryIsOk(int x, int y, float z)
+bool batteryIsOk(int temp, int soc, float cRate)
 {
-    bool a, b, c;
-    a = temperature(x);
-    b = StateOfCharge(y);
-    c = chargeRate(z);
-    return (a && b && c);
+    bool temp_return, soc_return, cRate_return;
+    temp_return = temperature(temp);
+    soc_return = StateOfCharge(soc);
+    cRate_return = chargeRate(cRate);
+    return (temp_return && soc_return && cRate_return);
 }
 
 int main() {
